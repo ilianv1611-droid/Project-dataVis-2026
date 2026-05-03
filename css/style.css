@@ -270,17 +270,17 @@ td {
     color: black;
 }
 
-.year-btn-active {
+.year-btn-active, .continent-active {
     background: slategrey;
     color: white;
     border: 1px solid slategrey;
 }
 
-.year-btn-inactive {
+.year-btn-inactive, .continent-inactive {
     opacity: 0.4;
 }
 
-.year-btn-land:hover {
+.year-btn-land:hover, .continent-btn:hover {
     transform: translateY(-2px);
 }
 
@@ -300,8 +300,4 @@ td {
     padding: 4px 8px;
     border-radius: 6px;
     transition: 0.2s;
-}
-
-.continent-btn:hover {
-    transform: translateY(-1px);
 }
