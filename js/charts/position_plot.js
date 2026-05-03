@@ -75,6 +75,22 @@ function renderPositionPlot(data) {
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+    const startDate = new Date('2019-12-01');
+    const endDate = new Date('2023-06-30');
+
+    const startX = xScale(startDate);
+    const endX = xScale(endDate);
+
+    const shadeWidth = endX - startX;
+
+    chart.append("rect")
+        .attr("x", startX)
+        .attr("y", 0)
+        .attr("width", shadeWidth)
+        .attr("height", height)
+        .style("fill", "rgba(255, 0, 0, 0.1)")
+        .attr("opacity", 0.4);
+
     const linesGroup = chart.append("g");
 
     chart.append("g")
@@ -207,7 +223,7 @@ function renderPositionPlot(data) {
 
     //maak selectie ding om landen al dan niet te selecteren
     const list = countryControls.append("div")
-        .style("border", "1px solid #ccc")
+        .style("border", "1px solid #666")
         .style("height", "200px")
         .style("overflow-y", "scroll")
         .style("padding", "5px");
@@ -254,10 +270,6 @@ function renderPositionPlot(data) {
         updateList(this.value);
     });
 
-    //kleurenschaal
-    const color = d3.scaleOrdinal(d3.schemeCategory10)
-        .domain([...grouped.keys()]);
-
     //helper voor de lijn
     const line = d3.line()
         .x(d => xScale(d.year))
@@ -277,7 +289,7 @@ function renderPositionPlot(data) {
             linesGroup.append("path")
                 .datum(values)
                 .attr("fill", "none")
-                .attr("stroke", color(key))
+                .attr("stroke","#666")
                 .attr("stroke-width", 2)
                 .attr("d", line)
                 .style("cursor", "pointer")
@@ -316,10 +328,10 @@ function renderPositionPlot(data) {
                 .append("circle")
                 .attr("cx", d => xScale(d.year))
                 .attr("cy", d => yScale(d.position))
-                .attr("r", 5)
+                .attr("r", 3)
                 .style("cursor", "pointer")
                 .style("opacity", "0.55")
-                .attr("fill", color(key))
+                .attr("fill", "#666")
                 .on("mouseover", function (event, d) {
                     tooltipGroup.style("display", null);
                     tooltipGroup.raise();
@@ -357,18 +369,8 @@ function renderPositionPlot(data) {
         updateLegend();
     }
 
-    const legendContainer = container
-        .append("div")
-        .style("margin-left", "45px")
-        .style("max-height", (height + margin.bottom) + "px")   //splitst in kolommen die niet verder gaan dan
-        .style("column-width", "120px")       //lengte van de grafiek
-        .style("column-gap", "10px");
-
     function updateLegend() {
         const selected = Array.from(selectedCountries);
-
-        const items = legendContainer.selectAll(".legend-item")
-            .data(selected, d => d);
 
         const enter = items.enter()
             .append("div")
@@ -389,7 +391,7 @@ function renderPositionPlot(data) {
         const merged = enter.merge(items);
 
         merged.select("div")
-            .style("background-color", d => color(d));
+            .style("background-color", d => "#666");
 
         merged.select("span")
             .text(d => d);
