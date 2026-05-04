@@ -10,10 +10,10 @@
 <body>
 <div class = "hero">
     <nav>
-        <div class="left">
+        <div class="left-header">
             <img src="images/whr.png" class="logo" alt="Logo World Happiness Report">
         </div>
-        <ul class="nav-list">
+        <ul class="right-header">
             <li><button class="page-button active" onclick="showPage('achtergrond')">Achtergrond</button></li>
             <li><button class="page-button" onclick="showPage('variabelen')">Variabelen</button></li>
             <li><button class="page-button" onclick="showPage('data')">Data</button></li>
@@ -21,6 +21,10 @@
         </ul>
     </nav>
 </div>
+
+
+<!-- TODO: klikbare knoppen in tekstjes (waar nodig) -->
+<!-- TODO: corona in legende toevoegen-->
 
 <!-- dit zijn de verschillende pagina's waarin je per pagina alles kan noteren wat daar hoort -->
 <!--pagina voor achtergrondinformatie-->
@@ -106,7 +110,7 @@
     </ul>
 </div>
 
-<!--TODO: voeg scaling toe zodanig dat de pagina zich goed gedraagt op verschillende platforms/formaten-->
+
 <!--pagina voor alle datavisualisaties-->
 <div id="data" class="page">
     <div id="line_plot_landen" class="plot-container"></div>
@@ -119,17 +123,17 @@
         landen in Oceanië behoren ook tot een van de gelukkigsten van de wereld. Wanneer gekeken wordt naar het
         Midden-Oosten is er een duidelijke scheiding te zien tussen twee groepen van landen. Dit zijn de rijke en de
         arme landen. Bij de lagere scores horen ook landen die niet noodzakelijk arm zijn, maar te kampen hebben moet
-        moeilijke economische of politieke situaties.</p>
+        moeilijke economische of politieke situaties. Kies zeker zelf ook wat landen om te vergelijken!</p>
     <div class=separator-bar></div>
     <div class="plot-container">
         <div class="left">
             <div id="world_chart"></div>
             <div id="controls">
-                <label for="year_slider">Year: <span id="year_label">2025</span></label>
+                <label for="year_slider">Jaar: <span id="year_label">2025</span></label>
                 <input type="range" id="year_slider">
             </div>
         </div>
-        <div class="right" style="max-width: 30ch">
+        <div class="right" style="max-width: 40ch">
             <p class="tussentekst">Op deze kaart is een duidelijk verschil te zien over continenten heen. Er is te
                 zien dat de hogere life evaluation scores te vinden zijn in Europa, Amerika en Oceanië. In het
                 Midden-Oosten zijn er zowel hogere als lagere scores. Afghanistan is, over alle landen heen en ook
@@ -141,29 +145,28 @@
         </div>
     </div>
     <div class=separator-bar></div>
-    <div id="scatter_plot" class="plot-container">
+    <div id="scatter_plot" class="plot-container" style="justify-content: center">
     </div>
     <p class="tussentekst">Wat maakt mensen gelukkig? Is het economische welvaart of vrijheid? Per land wordt in
         dit onderzoek de bijdrage (in %) van elke factor over de verschillende jaren uitgewerkt ten opzichte van
         de life evaluation score. We wijzen graag op enkele globale trends. Economische welvaart (uitgedrukt door
         BBP per capita) werd in de afgelopen jaren steeds belangrijker, en in 2025 kon men voor veel landen
-        gemakkelijk 30% van de levensevaluatiescore toeschrijven aan het GDP/BBP. Sociale ondersteuning fluctueerde
+        gemakkelijk 30% van de life evaluation score toeschrijven aan het GDP/BBP. Sociale ondersteuning fluctueerde
         echter sterk van jaar tot jaar. Tijdens 2020 en 2021 droeg deze factor erg weinig bij aan de life
         evaluation scores, zeker juist aan het begin van de coronacrisis. Op een vergelijkbare wijze zien we
         dat de bijdrage van mondiale gezondheid het hoogst was in 2019 en 2025, maar aanzienlijk lager was in
         de jaren die ertussen lagen.
     </p>
     <div class=separator-bar></div>
-    <div id="position_plot" class="plot-container"></div>
+    <div id="position_plot" class="plot-container" style="justify-content: center"></div>
     <p class="tussentekst">Welke landen hebben nu de hoogste life evaluation? Van 2019 tot 2025 was Finland keer op keer
-        nummer 1. Onder de Aziatische landen vormen Taiwan en Singapore een erg duidelijk top 2. Afghanistan is hier
-        het meest ongelukkige land, en het is dat bovendien ook wereldwijd. Het midden Oosten lijkt zich duidelijk in twee
+        nummer 1. Onder de Aziatische landen vormen Taiwan en Singapore een erg duidelijke top 2. Afghanistan is hier
+        het meest ongelukkige land, en het is dat bovendien ook wereldwijd. Het Midden-Oosten lijkt zich duidelijk in twee
         groepen te verdelen; enerzijds landen die consistent bij de top 50 gelukkigste landen zijn, en anderzijds landen
-        die zich eerder bij de top 50 ongelukkigste landen bevinden. In dit deel van de wereld is Israel de duidelijke
+        die zich eerder bij de top 50 ongelukkigste landen bevinden. In dit deel van de wereld is Israël de duidelijke
         koploper. Kies zeker zelf ook enkele landen om te vergelijken!
     </p>
 </div>
-
 
 
 <div id="landen" class="page">
@@ -181,7 +184,7 @@
             <!-- zoekbalk -->
             <input type="text" id="search_country" placeholder="Zoek land...">
             <div id="country_list"></div>
-            <button id="clear_btn">Clear</button>
+            <button id="clear_btn">Wis alles</button>
             <div id="year_buttons" style="display: flex; gap: 8px; margin-top:10px"></div>
             <h1 id="country_name"></h1>
             <p id="average"></p>

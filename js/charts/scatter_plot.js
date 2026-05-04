@@ -21,7 +21,7 @@ d3.csv("data/WHR26_Data_Figure_2.1.csv")
     })
     .catch((error) => console.error("Error loading CSV:", error));
 
-//TODO: fix de positionering van de sidebar
+
 
 function renderScatterPlot(data, yCol, selYears, color) {
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
@@ -153,7 +153,7 @@ function renderPlots(mapped) {
         .attr("class", "sidebar");
 
     sidebar.append("div")
-        .text("Y-axis")
+        .text("Y-as")
         .style("font-weight", "bold")
         .style("font-size", "10px")
         .style("text-transform", "uppercase")

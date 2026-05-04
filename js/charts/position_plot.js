@@ -131,7 +131,7 @@ function renderPositionPlot(data) {
         .attr("y", margin.top - 44)
         .style("font-size", "16px")
         .style("font-weight", "bold")
-        .text("Positionering van landen doorheen de tijd");
+        .text("Positionering landen doorheen de tijd");
 
     //y-as label geven
     chart.append("text")
@@ -165,7 +165,7 @@ function renderPositionPlot(data) {
 
     //deselecteer alles knop
     countryControls.append("button")
-        .text("Clear")
+        .text("Wis alles")
         .on("click", () => {
             selectedCountries.clear();
             update();
@@ -175,8 +175,8 @@ function renderPositionPlot(data) {
                 .classed("continent-inactive", true);
         });
 
-    const continents = ["Africa", "Asia", "Central America", "Europe", "Middle East", "North America",
-        "Oceania", "South America"];
+    const continents = ["Afrika", "Azië", "Centraal-Amerika", "Europa", "Midden-Oosten", "Noord-Amerika",
+        "Oceanië", "Zuid-Amerika"]
 
     continentControls.append("div")
         .style("margin-top", "10px")
@@ -294,7 +294,7 @@ function renderPositionPlot(data) {
                 .attr("d", line)
                 .style("cursor", "pointer")
                 .style("opacity", "0.55")
-                .on("mouseover", function (event) {
+                .on("mouseover", function () {
                     tooltipGroup.style("display", null);
                     tooltipGroup.raise();
 
@@ -370,8 +370,6 @@ function renderPositionPlot(data) {
     }
 
     function updateLegend() {
-        const selected = Array.from(selectedCountries);
-
         const enter = items.enter()
             .append("div")
             .attr("class", "legend-item")
@@ -391,7 +389,7 @@ function renderPositionPlot(data) {
         const merged = enter.merge(items);
 
         merged.select("div")
-            .style("background-color", d => "#666");
+            .style("background-color", "#666");
 
         merged.select("span")
             .text(d => d);

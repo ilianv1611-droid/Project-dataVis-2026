@@ -272,6 +272,7 @@ function drawLinePlot(country){
         .attr("stroke", "purple")
         .attr("stroke-width", 2)
         .attr("d", line)
+        .style("opacity", "0.75")
 
     //punten met hover
     linesGroup.selectAll(null)
@@ -282,6 +283,7 @@ function drawLinePlot(country){
         .attr("cy", d => yScale(d.life_eval))
         .attr("r", 5)
         .style("cursor", "pointer")
+        .style("opacity", "0.75")
         .attr("fill", "#93368D")
         .on("mouseover", function (event, d) {
             tooltipGroup.style("display", null);
@@ -489,8 +491,18 @@ function drawPieChart(d) {
             .attr("width", width)
             .attr("height", height);
 
+        svg.append("text")
+            .attr("x", width/5)
+            .attr("y", 15)
+            .attr("text-anchor", "left")
+            .attr("fill", "black")
+            .style("font-size", "16px")
+            .style("font-weight", "bold")
+            .text("Life evaluation per variabele");
+
+
         const g = svg.append("g")
-            .attr("transform", "translate(" + width / 3 + "," + height / 2 + ")");
+            .attr("transform", "translate(" + width / 3 + "," + (height / 2 + 20) + ")");
 
         const colorDomain = overzichtData.map(item => item.v);
         color = d3.scaleOrdinal(d3.schemeCategory10).domain(colorDomain);
@@ -617,7 +629,7 @@ function updateBackContainer() {
 
             backContainer.html(`
             <span style="font-size: 20px;">&#8592;</span> 
-            <span style="font-weight: bold; margin-left: 10px;"> To Map</span>
+            <span style="font-weight: bold; margin-left: 10px;">Terug naar de kaart</span>
         `);}
 }
 
